@@ -1,5 +1,5 @@
 main.component('newTable', {   
-   templateUrl: '/js/components/new-table.template.html',
+   templateUrl: '/retable/js/components/new-table.template.html',
    controller: ['$scope', '$filter', '$http', function TableController($scope, $filter, $http) {
     
     
