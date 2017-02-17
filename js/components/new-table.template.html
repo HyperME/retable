@@ -1,0 +1,38 @@
+<div class="container">
+     
+   
+   <div>
+    <input ng-model="search" class="form-control" placeholder="введите ваш запрос...">
+    <br/>
+ 
+    
+    <table class="table table-striped table-bordered table-condensed">
+        
+   
+    <tr class="info">
+        <td ng-repeat="(key, value) in tableDataHuge[0]">
+        {{value}}
+        <i class="btn btn-info btn-xs" ng-click="$parent.order = [$index]+''; $parent.reverseSort = !reverseSort">&#9660;</i>
+        </td>
+    </tr>
+    <tr ng-repeat="p in tableDataHuge | filter:search | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: order : reverseSort" ng-if="p.length">
+        <td ng-repeat="item in p track by $index" ng-click="pointed(item)">{{item}}</td>
+    </tr>  
+  
+    </table>
+    <div class="pagination">
+        <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1; pageCount()" class="btn btn-info">
+        &#9668;
+    </button>
+    {{currentPage+1}}/{{numberOfPages()}}
+    <button ng-disabled="currentPage >= numberOfPages() - 1" ng-click="currentPage=currentPage+1;pageCount()" class="btn btn-info">
+       &#9658;
+    </button> 
+    </div>
+       <div class="print-field">
+          <p>Вывод данных по клику на ячейку:</p>
+          <h3>{{ point }}</h3>
+       </div>
+       </div>
+      
+</div>
